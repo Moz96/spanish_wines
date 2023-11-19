@@ -7,11 +7,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-# Seed categories
-puts 'Seeding categories...'
-Category.create(name: 'Category 1')
-Category.create(name: 'Category 2')
-# Add more categories as needed...
 
 puts 'Seeding users...'
 User.create(email: 'user1@example.com', password: 'password123')
@@ -19,8 +14,8 @@ User.create(email: 'user2@example.com', password: 'password456')
 # Add more users as needed...
 
 puts 'Seeding products...'
-Product.create(name: 'Product 1', description: 'Description for Product 1', price: 19.99, vintage: 2022, quantity: 10, category_id: 1)
-Product.create(name: 'Product 2', description: 'Description for Product 2', price: 29.99, vintage: 2021, quantity: 5, category_id: 2)
+Product.create(name: 'Product 1', description: 'Description for Product 1', price: 19.99, vintage: 2022, quantity: 10, category: "red")
+Product.create(name: 'Product 2', description: 'Description for Product 2', price: 29.99, vintage: 2021, quantity: 5, category: "white")
 # Add more products as needed...
 
 puts 'Seeding addresses...'
