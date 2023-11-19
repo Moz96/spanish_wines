@@ -2,14 +2,14 @@
 
 one:
   user: one
-  adress_line: MyString
+  address_line: MyString
   city: MyString
   county: MyString
   post_code: MyString
 
 two:
   user: two
-  adress_line: MyString
+  address_line: MyString
   city: MyString
   county: MyString
   post_code: MyString

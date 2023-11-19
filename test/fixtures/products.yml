@@ -6,7 +6,7 @@ one:
   price: 9.99
   vintage: 1
   quantity: 1
-  category_id: one
+  category: one
 
 two:
   name: MyString
@@ -14,4 +14,4 @@ two:
   price: 9.99
   vintage: 1
   quantity: 1
-  category_id: two
+  category: two
