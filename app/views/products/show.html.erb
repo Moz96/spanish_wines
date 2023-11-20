@@ -6,7 +6,9 @@
       <p> <%= @product.description%> </p>
       <p class="product_category"><strong>Category:</strong> <%= @product.category %> </p>
     </div>
+    <%= link_to 'Add Review', new_product_review_path(@product) %>
    <%#  <div class="button">
    <%= link_to "Add to cart" , item_bookings_path(product), class: "btn btn-secondary", data: { turbo_method: :post } %>
    <%#> </div> %>
-  </div>
+</div>
+<%= link_to "Back to Wine list", products_path %>

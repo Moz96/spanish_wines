@@ -1,0 +1,9 @@
+<%= form_with(model: [@product, @review], url: product_reviews_path(@product)) do |form| %>
+  <%= form.label :rating %>
+  <%= form.number_field :rating %>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+
+  <%= form.submit 'Submit Review' %>
+<% end %>
