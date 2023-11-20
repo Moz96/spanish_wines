@@ -1,0 +1,23 @@
+.main-container {
+  width: 100%;
+  max-width: 1200px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the content */
+  padding: 20px;
+}
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.product .name {
+  font-weight: bold;
+  color: #333;
+}
+
+.product-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: minmax(200px, auto); /* Set the height of each row */
+  grid-gap: 20px;
+}
