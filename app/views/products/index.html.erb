@@ -1,0 +1,13 @@
+<%= stylesheet_link_tag('product')%>
+
+<div class="main-container">
+  <div class="product-grid">
+    <% @products.each do |product| %>
+      <div class="product">
+        <h2><%= product.name %></h2>
+        <p><%= product.description %></p>
+        <p><%= product.category%></p>
+      </div>
+    <%end%>
+  </div>
+</div>

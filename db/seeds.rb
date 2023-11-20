@@ -16,6 +16,8 @@ User.create(email: 'user2@example.com', password: 'password456')
 puts 'Seeding products...'
 Product.create(name: 'Product 1', description: 'Description for Product 1', price: 19.99, vintage: 2022, quantity: 10, category: "red")
 Product.create(name: 'Product 2', description: 'Description for Product 2', price: 29.99, vintage: 2021, quantity: 5, category: "white")
+Product.create(name: 'Product 3', description: 'Description for Product 3', price: 19.99, vintage: 2022, quantity: 10, category: "red")
+Product.create(name: 'Product 4', description: 'Description for Product 4', price: 29.99, vintage: 2021, quantity: 5, category: "white")
 # Add more products as needed...
 
 puts 'Seeding addresses...'
