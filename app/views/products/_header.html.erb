@@ -1,0 +1,17 @@
+<div class="header" >
+  <h1> /WAIN/</h1>
+  <div class="navbar">
+    <ul class="navbar-items">
+      <li class="navbar-item-button"><%= link_to "Wine list", products_path, class: "button-navbar"%></li>
+      <li class="navbar-item-button"><%= link_to "Your orders", class: "button-navbar"%></li>
+      <li class="navbar-item-button"><%= link_to "About", class: "button-navbar"%></li>
+      <div class="right-items">
+        <% if user_signed_in? %>
+          <li class="sign-in-out"><%= link_to "Sign Out", destroy_user_session_path, data: { turbo: true, turbo_method: :delete } %></li>
+        <% else %>
+          <li class="sign-in-out"><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+</div>
