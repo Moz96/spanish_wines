@@ -1,0 +1,12 @@
+<div class="container">
+    <h2> <%= @product.name %> </h2>
+    <h4> £<%= @product.price%> </h4>
+    <h5> <%= @product.vintage%> </h5>
+    <div class="product_description_show_page">
+      <p> <%= @product.description%> </p>
+      <p class="product_category"><strong>Category:</strong> <%= @product.category %> </p>
+    </div>
+   <%#  <div class="button">
+   <%= link_to "Add to cart" , item_bookings_path(product), class: "btn btn-secondary", data: { turbo_method: :post } %>
+   <%#> </div> %>
+  </div>

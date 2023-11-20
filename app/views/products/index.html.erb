@@ -4,7 +4,7 @@
   <div class="product-grid">
     <% @products.each do |product| %>
       <div class="product">
-        <h2><%= product.name %></h2>
+        <h2><%= link_to product.name, product_path(product) %></h2>
         <p><%= product.description %></p>
         <p><%= product.category%></p>
       </div>
