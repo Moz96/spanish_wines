@@ -6,9 +6,11 @@
       <p> <%= @product.description%> </p>
       <p class="product_category"><strong>Category:</strong> <%= @product.category %> </p>
     </div>
-    <%= link_to 'Add Review', new_product_review_path(@product) %>
-   <div class="cart-button">
-      <%= link_to "Add to cart", cart_cart_items_path(product_id: @product.id), method: :post, class: "btn btn-secondary", data: { turbo: "false" } %>
-    </div>
-   <%= link_to "Back to Wine list", products_path %>
+     <%= link_to 'Add Review', new_product_review_path(@product) %>
+     <% @product.reviews.each do |review|%>
+     <div class='product-review'>
+        <p><%= review.description%></p>
+     </div>
+     <%end %>
+     <%= link_to "Back to Wine list", products_path %>
 </div>
