@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :destroy, :add_to_cart]
+  before_action :set_product, only: [:show, :edit, :destroy]
   def index
     @products = Product.all
   end
@@ -34,10 +34,6 @@ class ProductsController < ApplicationController
       redirect_to products_url
     end
   end
-  def add_to_cart
-    current_user.cart.cart_items.create(product: @product)
-  end
-
   private
   def set_product
     @product = Product.find(params[:id])
