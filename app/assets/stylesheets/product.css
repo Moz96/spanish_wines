@@ -4,15 +4,17 @@
   margin: 0 auto; /* Center the content */
   padding: 20px;
 }
-.product {
+ .product {
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
+  text-decoration: none;
 }
 
 .product .name {
   font-weight: bold;
   color: #333;
+  text-decoration: none;
 }
 
 .product-grid{

@@ -9,6 +9,7 @@
      <%= link_to 'Add Review', new_product_review_path(@product) %>
      <% @product.reviews.each do |review|%>
      <div class='product-review'>
+        <p><%= review.rating %> <p>
         <p><%= review.description%></p>
      </div>
      <%end %>
