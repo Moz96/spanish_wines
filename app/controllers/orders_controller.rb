@@ -21,5 +21,7 @@ class OrdersController < ApplicationController
     end
   end
 
-
+  def order_params
+    params.require(:order).permit(:product_id) # Include other necessary fields
+  end
 end
