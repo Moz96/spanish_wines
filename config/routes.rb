@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'about', to: 'about#index'
   resources :products do
-    resources :orders, only:[:new, :create, :show]
     resources :reviews, only:[:new, :create, :show]
+    resources :orders, only:[:create, :new]
+  end
+  resources :users do
+    resources :orders, only:[:index]
   end
   # Defines the root path route ("/")
   # root "posts#index"

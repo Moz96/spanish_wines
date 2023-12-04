@@ -1,17 +1,20 @@
-<div class="container">
-    <h2> <%= @product.name %> </h2>
-    <h4> £<%= @product.price%> </h4>
-    <h5> <%= @product.vintage%> </h5>
-    <div class="product_description_show_page">
-      <p> <%= @product.description%> </p>
-      <p class="product_category"><strong>Category:</strong> <%= @product.category %> </p>
+<section class="product-card">
+  <img src="/images/Villa-Abad-Syrah-Tempranillo.jpg">
+  <ul>
+    <li> <%= @product.name %> </h2>
+    <li> £<%= @product.price%> </li>
+    <li> <%= @product.vintage%> </li>
+    <li> <%= @product.description%> </li>
+    <li> <%= @product.category %> </li>
+  </ul>
+    <%= button_to 'Add to cart', product_orders_path(@product), method: :post, class: "cart-button"%>
+    <%= link_to 'Add Review', new_product_review_path(@product) %>
+</section>
+
+  <%# <% @product.reviews.each do |review|%>
+    <%# <div class='product-review'>
+      <p><%= review.rating  <p>%>
+      <%# <p><%= review.description</p>
     </div>
-     <%= link_to 'Add Review', new_product_review_path(@product) %>
-     <% @product.reviews.each do |review|%>
-     <div class='product-review'>
-        <p><%= review.rating %> <p>
-        <p><%= review.description%></p>
-     </div>
-     <%end %>
-     <%= link_to "Back to Wine list", products_path %>
-</div>
+  <%#<%end %>
+  <%= link_to "Back to Wine list", products_path %>

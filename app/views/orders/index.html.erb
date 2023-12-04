@@ -1,0 +1,10 @@
+<main class="order-container">
+  <section class="order-grid">
+    <% @orders.each do |order|%>
+    <div class="order">
+      <%= order.product.name%>
+      <%= order.total_price%>
+      <%end%>
+    </div>
+  </section>
+</main>

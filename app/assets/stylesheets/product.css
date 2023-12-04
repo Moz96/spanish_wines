@@ -23,3 +23,43 @@
   grid-auto-rows: minmax(200px, auto); /* Set the height of each row */
   grid-gap: 20px;
 }
+
+.image-container{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.product-image{
+  width: 200px;
+  height:auto;
+}
+
+.product-card{
+  height: 200px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  justify-content:space-evenly;
+}
+
+.product-card img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+}
+
+.cart-button{
+  padding: 1.5em 3.1em;
+	border: none;
+	border-radius: 25px;
+	font-size: 0.8em;
+	font-weight: 700;
+	letter-spacing: 1.3px;
+	color: red;
+	cursor: pointer;
+}
