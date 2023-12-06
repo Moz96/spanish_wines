@@ -2,6 +2,8 @@
 
 one:
   user: one
+  product: one
 
 two:
   user: two
+  product: two

@@ -19,3 +19,7 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+:root{
+  --primary-color: #800000;
+}

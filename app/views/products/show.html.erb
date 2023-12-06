@@ -1,14 +1,27 @@
-<section class="product-card">
-  <img src="/images/Villa-Abad-Syrah-Tempranillo.jpg">
-  <ul>
-    <li> <%= @product.name %> </h2>
-    <li> £<%= @product.price%> </li>
-    <li> <%= @product.vintage%> </li>
-    <li> <%= @product.description%> </li>
-    <li> <%= @product.category %> </li>
-  </ul>
-    <%= button_to 'Add to cart', product_orders_path(@product), method: :post, class: "cart-button"%>
-    <%= link_to 'Add Review', new_product_review_path(@product) %>
+<section class="product-details">
+ <div class="image-container">
+    <%= image_tag 'Villa-Abad-Syrah-Tempranillo.jpg', class: "product-card-image" %>
+  </div>
+  <div class="details-container">
+    <div class="product-title">
+      <h1><%= @product.name %></h1>
+    </div>
+    <div class="product-description">
+      <p><%= @product.description%> </p>
+    </div>
+    <div class="product-info">
+      <p>£<%= @product.price %></p>
+      <span class="divider">|</span>
+      <p><%= @product.vintage %></p>
+      <span class="divider">|</span>
+      <p><%= @product.category %></p>
+    </div>
+    <div class="buttons">
+      <%= button_to 'Add to cart', product_orders_path(@product), method: :post, class: "cart-button"%>
+      <%= link_to 'Add Review', new_product_review_path(@product) %>
+      <%= link_to "Back to Wine list", products_path %>
+    </div>
+  </div>
 </section>
 
   <%# <% @product.reviews.each do |review|%>
