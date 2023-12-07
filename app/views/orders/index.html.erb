@@ -3,7 +3,6 @@
     <% @orders.each do |order|%>
     <div class="order">
       <%= order.product.name%>
-      <%= order.product.quantity%>
       <%= order.total_price%>
       <%end%>
     </div>
