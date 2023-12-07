@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
   resources :users do
     resources :orders, only:[:index]
+    resources :cart, only:[:show, :update]
+    post 'add_product/:product_id', action: :add_product, as: :add_product_to_cart, on: :member
   end
   # Defines the root path route ("/")
   # root "posts#index"
