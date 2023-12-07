@@ -2,10 +2,20 @@
   <div class="product-grid">
     <% @products.each do |product| %>
       <div class="product">
+        <div class="image-container">
+          <%= image_tag 'Villa-Abad-Syrah-Tempranillo.jpg', class: "product-image" %>
+        </div>
         <h2><%= link_to product.name, product_path(product) %></h2>
         <p><%= product.description %></p>
-        <p><%= product.category%></p>
+        <div class="product-info">
+          <p>£<%= product.price %></p>
+         <span class="divider">|</span>
+          <p><%= product.category %></p>
+          <span class="divider">|</span>
+          <p><%= product.vintage %></p>
+        </div>
+        <%= button_to 'Add to cart', product_orders_path(product), method: :post, class: "cart-button" %>
       </div>
-    <%end%>
+    <% end %>
   </div>
 </div>

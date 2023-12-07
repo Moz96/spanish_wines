@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SpanishWines</title>
+    <title>/WAIN/</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -18,7 +18,10 @@
           <ul class="navbar-items">
             <li class="navbar-item-button"><%= link_to "About", about_path, class: "button-navbar"%></li>
             <li class="navbar-item-button"><%= link_to "Wine list", products_path, class: "button-navbar"%></li>
-            <li class="navbar-item-button"><%= link_to "Your orders", class: "button-navbar"%></li>
+            <% if user_signed_in? %>
+             <li class="navbar-item-button"> <%= link_to "Your orders", user_orders_path(current_user), class: "button-navbar" %></li>
+              <!-- Other links for signed-in users -->
+            <% end %>
             <div class="navbar-item-button">
               <% if user_signed_in? %>
                 <li class="sign-in-out"><%= link_to "Sign Out", destroy_user_session_path, data: { turbo: true, turbo_method: :delete } %></li>
