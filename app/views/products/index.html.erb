@@ -14,7 +14,7 @@
             <span class="divider">|</span>
             <p><%= product.category %></p>
           </div>
-          <%= button_to 'Add to cart', product_orders_path(product), method: :post, class: "cart-button" %>
+          <%= button_to 'Add to cart', add_to_cart_product_path(product), method: :post, class: "cart-button" %>
         </div>
     <% end %>
   </div>

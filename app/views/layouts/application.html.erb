@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'rails-ujs' %>
   </head>
 
   <body>
@@ -20,6 +21,7 @@
             <li class="navbar-item-button"><%= link_to "Wine list", products_path, class: "button-navbar"%></li>
             <% if user_signed_in? %>
              <li class="navbar-item-button"> <%= link_to "Your orders", user_orders_path(current_user), class: "button-navbar" %></li>
+             <li class="navbar-item-button"> <%= link_to "Your cart", user_cart_path(current_user, current_user.cart), class: "button-navbar" %></li>
               <!-- Other links for signed-in users -->
             <% end %>
             <div class="navbar-item-button">

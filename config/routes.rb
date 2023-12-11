@@ -10,12 +10,12 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only:[:new, :create, :show]
     resources :orders, only:[:create, :new]
+    post 'add_to_cart', on: :member
   end
   resources :users do
-    resources :orders, only:[:index]
-    resources :cart, only:[:show, :update]
-    post 'add_product/:product_id', action: :add_product, as: :add_product_to_cart, on: :member
+    resources :orders, only: [:index]
+    resources :carts, only: [:show, :update] do
+      resources :cart_items, only: [:create, :destroy]
+    end
   end
-  # Defines the root path route ("/")
-  # root "posts#index"
 end
