@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -17,5 +18,9 @@ Rails.application.routes.draw do
     resources :carts, only: [:show, :update] do
       resources :cart_items, only: [:create, :destroy]
     end
+  end
+  namespace :admin do
+    root 'products#index'
+    resources :products
   end
 end
