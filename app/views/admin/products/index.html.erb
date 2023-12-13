@@ -1,0 +1,17 @@
+<div class="main-container">
+  <div class="product-grid">
+    <% @products.each do |product| %>
+        <div class="product">
+          <div class="image-container">
+            <%= image_tag 'Villa-Abad-Syrah-Tempranillo.jpg', class: "product-image" %>
+          </div>
+          <h2><%= link_to product.name, product_path(product) %></h2>
+          <div class="product-info">
+            <p> <%= product.quantity%> </p>
+          </div>
+
+          <%= button_to 'Add to cart', add_to_cart_product_path(product), method: :post, class: "cart-button" %>
+        </div>
+    <% end %>
+  </div>
+</div>

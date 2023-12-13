@@ -1,28 +1,39 @@
-class Admin::ProductController < ApplicationController#
-  before_action :authenticate_admin!
-
+class Admin::ProductsController < ApplicationController
   def index
     @products = Product.all
   end
 
+  def new
+    @product = Product.new
+  end
+
   def create
-    @product = Product.new(params[:product])
+    @product = Product.new(product_params) # Instantiate the product from form params
+
     if @product.save
-      flash[:success] = "Object successfully created"
-      redirect_to @product
+      flash[:success] = "New wine added"
+      redirect_to admin_products_path
     else
-      flash[:error] = "Something went wrong"
-      render 'new'
+      flash[:error] = "Wine not listed"
+      render :new # Render the 'new' view to show the errors
     end
   end
 
+  def edit
+
+  end
+
   def destroy
-    if @product.destroy
-      flash[:success] = 'Object was successfully deleted.'
-      redirect_to products_url
-    else
-      flash[:error] = 'Something went wrong'
-      redirect_to products_url
-    end
+
+  end
+
+  private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :price, :description, :vintage, :quantity, :category)
   end
 end
