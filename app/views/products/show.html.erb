@@ -19,6 +19,7 @@
     <div class="buttons">
       <%= button_to 'Add to cart', add_to_cart_product_path(@product), method: :post, class: "cart-button" %>
       <%= link_to 'Add Review', new_product_review_path(@product) %>
+      <%= button_to 'Buy Now', product_purchase_path(@product), class: "cart-button"%>
       <%= link_to "Back to Wine list", products_path %>
     </div>
   </div>
