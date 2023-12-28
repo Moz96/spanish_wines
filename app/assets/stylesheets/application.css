@@ -20,6 +20,22 @@
   scroll-behavior: smooth;
 }
 
+body {
+  background: linear-gradient(120deg, #7d1424, #f15f79, #ffd3b6, #ff9a8b, #c84a5d, #7d1424, #c84a5d, #ff9a8b, #ffd3b6, #f15f79, #7d1424);
+  background-size: 1000% 1000%; /* Larger size to accommodate transition */
+  animation: gradientTransition 30s ease infinite; /* Animation for transition */
+}
+
+/* Animation for transitioning gradient */
+@keyframes gradientTransition {
+  0% {
+    background-position: 0% 50%; /* Start position */
+  }
+  100% {
+    background-position: 100% 50%; /* End position */
+  }
+}
+
 :root{
   --primary-color: #0D1F22;
 }
