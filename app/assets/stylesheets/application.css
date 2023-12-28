@@ -21,7 +21,7 @@
 }
 
 body {
-  background: linear-gradient(120deg, #7d1424, #f15f79, #ffd3b6, #ff9a8b, #c84a5d, #7d1424, #c84a5d, #ff9a8b, #ffd3b6, #f15f79, #7d1424);
+  background: linear-gradient(120deg, #5f6a4e, #869978, #bacba3, #869978, #5f6a4e, #5f6a4e, #869978, #bacba3, #869978, #5f6a4e);
   background-size: 1000% 1000%; /* Larger size to accommodate transition */
   animation: gradientTransition 30s ease infinite; /* Animation for transition */
 }
