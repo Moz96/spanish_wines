@@ -1,9 +1,9 @@
-main {
+.admin-new-product {
   width: 80%;
   margin: auto;
 }
 
-section {
+.product-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;

@@ -1,6 +1,6 @@
-<main>
+<main class="admin-new-product">
   <h2>List new wine</h2>
-  <section>
+  <section class="product-form">
     <%= form_with(model: [:admin, @product], url: admin_products_path) do |form| %>
       <div class="field">
         <%= form.label :name %>

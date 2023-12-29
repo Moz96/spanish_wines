@@ -29,10 +29,10 @@ body {
 /* Animation for transitioning gradient */
 @keyframes gradientTransition {
   0% {
-    background-position: 0% 50%; /* Start position */
+    background-position: 0% 50%;
   }
   100% {
-    background-position: 100% 50%; /* End position */
+    background-position: 100% 50%
   }
 }
 
