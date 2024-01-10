@@ -26,7 +26,7 @@
                 <%= link_to(user_cart_path(current_user, current_user.cart), class: "button-navbar") do %>
                   <i class='bx bx-cart'></i> Your cart
                 <% end %>
-                </li>
+              </li>
               <% end %>
             <div class="navbar-item-button">
               <% if user_signed_in? %>
@@ -40,5 +40,13 @@
       </div>
     </header>
     <%= yield %>
+      <footer>
+        <div class="footer">
+          <div class="media-icons">
+            <a href="#">  <i class='bx bxl-instagram'></i></a>
+            <a href="#">  <i class='bx bxl-instagram'></i></a>
+          </div>
+        </div>
+      </footer>
   </body>
 </html>

@@ -1,6 +1,6 @@
 <section class="product-details">
  <div class="image-container">
-    <%= image_tag 'Villa-Abad-Syrah-Tempranillo.jpg', class: "product-card-image" %>
+    <%= image_tag 'thumbnail_Villa-Abad-Syrah-Tempranillo 2 Background Removed.png', class: "product-card-image" %>
   </div>
   <div class="details-container">
     <div class="product-title">
@@ -18,8 +18,8 @@
     </div>
     <div class="buttons">
       <%= button_to 'Add to cart', add_to_cart_product_path(@product), method: :post, class: "cart-button" %>
-      <%= link_to 'Add Review', new_product_review_path(@product) %>
       <%= button_to 'Buy Now', new_product_purchase_path(@product), class: "cart-button"%>
+      <%= link_to 'Add Review', new_product_review_path(@product) %>
       <%= link_to "Back to Wine list", products_path %>
     </div>
   </div>

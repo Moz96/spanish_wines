@@ -1,20 +1,21 @@
-<h1>Your Shopping Cart</h1>
-<%if @cart_items.any?%>
-  <% @cart_items.each do |cart_item| %>
-    <div class="cart-item">
-      <h3><%= cart_item.product.name %></h3>
-      <p>Quantity: <%= cart_item.quantity %></p>
-      <p>Price: <%= cart_item.product.price * cart_item.quantity %></p>
-     <%= link_to 'Remove', user_cart_cart_item_path(@cart.user, @cart, cart_item), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-  <% end %>
-  <%else%>
-    <p> Your cart is empty </p>
-  <%end%>
 
-<div class="cart-summary">
-  <h2>Cart Summary</h2>
-  <p>Total Items: <%= @cart_items.sum(:quantity) %></p>
-  <p>Total Price: <%= @cart_items.map { |item| item.product.price * item.quantity }.sum %></p>
-  <%# <%= link_to 'Checkout', new_order_path %>
-</div>
+  <h1>Your Shopping Cart</h1>
+  <%if @cart_items.any?%>
+    <% @cart_items.each do |cart_item| %>
+      <div class="cart-item">
+        <h3><%= cart_item.product.name %></h3>
+        <p>Quantity: <%= cart_item.quantity %></p>
+        <p>Price: £<%= cart_item.product.price * cart_item.quantity %></p>
+      <%= link_to 'Remove', user_cart_cart_item_path(@cart.user, @cart, cart_item), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+    <%else%>
+      <p> Your cart is empty </p>
+    <%end%>
+
+  <div class="cart-summary">
+    <h2>Cart Summary</h2>
+    <p>Total Items: <%= @cart_items.sum(:quantity) %></p>
+    <p>Total Price: £<%= @cart_items.map { |item| item.product.price * item.quantity }.sum%></p>
+    <%# <%= link_to 'Checkout', new_order_path %>
+  </div>
