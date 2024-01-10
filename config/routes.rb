@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'custom_sessions' }
+  devise_for :admins, controllers: { sessions: 'custom_sessions' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,10 +11,16 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only:[:new, :create, :show]
     resources :orders, only:[:create, :new]
+    resources :purchases, only:[:new]
+    post 'add_to_cart', on: :member
   end
   resources :users do
-    resources :orders, only:[:index]
+    resources :orders, only: [:index]
+    resources :carts, only: [:show, :update] do
+      resources :cart_items, only: [:create, :destroy]
+    end
   end
-  # Defines the root path route ("/")
-  # root "posts#index"
+  namespace :admin do
+    resources :products, only: [:index, :new, :create]
+  end
 end

@@ -1,0 +1,45 @@
+<main class="admin-new-product">
+  <h2>List new wine</h2>
+  <section class="product-form">
+    <%= form_with(model: [:admin, @product], url: admin_products_path) do |form| %>
+      <div class="field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= form.label :description %>
+        <%= form.text_field :description %>
+      </div>
+
+      <div class="field">
+        <%= form.label :price %>
+        <%= form.number_field :price, step: '0.01', pattern: '\d+(\.\d{1,2})?' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :vintage %>
+        <%= form.number_field :vintage %>
+      </div>
+
+      <div class="field">
+        <%= form.label :category %>
+        <%= form.text_field :category%>
+      </div>
+
+      <div class="field">
+        <%= form.label :quantity %>
+        <%= form.number_field :quantity %>
+      </div>
+
+      <div class ="field">
+       <%= form.label :image %>
+       <%= form.file_field :image %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "List" %>
+      </div>
+    <% end %>
+  </section>
+</main>

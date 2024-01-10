@@ -20,6 +20,107 @@
   scroll-behavior: smooth;
 }
 
-:root{
-  --primary-color: #800000;
+body {
+  background: linear-gradient(120deg, #5f6a4e, #869978, #bacba3, #869978, #5f6a4e, #5f6a4e, #869978, #bacba3, #869978, #5f6a4e);
+  background-size: 1000% 1000%; /* Larger size to accommodate transition */
+  animation: gradientTransition 30s ease infinite; /* Animation for transition */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main{
+  flex:1;
+  padding-bottom:10px
+}
+
+/* Animation for transitioning gradient */
+@keyframes gradientTransition {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%
+  }
+}
+
+header{
+  position: sticky;
+  width: 100%;
+  display: flex;
+}
+.logo {
+  margin: 5px;
+  padding: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-style: italic;
+  font-size: 80px;
+  line-height: 162px;
+  max-width: 30rem;
+  letter-spacing: 10px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+  }
+}
+
+ .navbar {
+  position: absolute;
+  top: 4.5rem;
+  width: 50%;
+  right: 0;
+}
+
+.navbar-items {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navbar-item-button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 8px 15px;
+  text-align: center;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.navbar-item-button a {
+  text-decoration: none;
+  color: inherit; /* To maintain default text color */
+}
+
+footer {
+  width: 100%;
+  background-color: #f5f5f5;
+  flex-shrink: 0;
+  bottom: 0;
+  position: fixed;
+  height: 50px; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.media-icons{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-item li{
+  display: inline-block;
+  margin: 0 10px;
 }
