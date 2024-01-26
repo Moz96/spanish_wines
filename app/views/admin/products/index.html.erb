@@ -3,14 +3,17 @@
     <% @products.each do |product| %>
         <div class="product">
           <div class="image-container">
-            <%= image_tag 'Villa-Abad-Syrah-Tempranillo.jpg', class: "product-image" %>
+            <% if product.image.attached? %>
+              <%= image_tag product.image, class: "product-image" %>
+            <% end %>
           </div>
           <h2><%= link_to product.name, product_path(product) %></h2>
           <div class="product-info">
             <p> <%= product.quantity%> </p>
           </div>
 
-          <%= button_to 'Add to cart', add_to_cart_product_path(product), method: :post, class: "cart-button" %>
+         <%= link_to "Edit", edit_admin_product_path(product) %>
+         <%= button_to "Delete", admin_product_path(product), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-button" %>
         </div>
     <% end %>
   </div>
