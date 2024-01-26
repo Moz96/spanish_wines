@@ -21,6 +21,6 @@ Rails.application.routes.draw do
     end
   end
   namespace :admin do
-    resources :products
+    resources :products, only: [:index, :new, :create]
   end
 end

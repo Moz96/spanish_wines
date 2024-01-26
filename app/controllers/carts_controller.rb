@@ -3,6 +3,7 @@ class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :update, :destroy]
 
   def show
+    # Retrieve the current user's cart items
     @cart_items = @cart.cart_items
   end
 
