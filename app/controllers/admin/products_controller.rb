@@ -20,11 +20,14 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-
+    @product
   end
 
   def destroy
-
+    @product
+    @product.destroy
+    flash[:success] = "Wine deleted"
+    redirect_to admin_products_path
   end
 
   private
@@ -34,6 +37,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :description, :vintage, :quantity, :category)
+    params.require(:product).permit(:name, :price, :description, :vintage, :quantity, :category, :image)
   end
 end

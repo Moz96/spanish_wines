@@ -3,7 +3,7 @@
     <% @products.each do |product| %>
         <div class="product">
           <div class="image-container">
-            <%= image_tag 'Villa-Abad-Syrah-Tempranillo.jpg', class: "product-image" %>
+            <%= image_tag product.image, class: "product-card-image" %>
           </div>
           <h2><%= link_to product.name, product_path(product) %></h2>
           <div class="product-info">
