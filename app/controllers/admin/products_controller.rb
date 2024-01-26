@@ -20,34 +20,13 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    set_product
-  end
 
-  def update
-    set_product
-    if @product.update(product_params)
-      flash[:success] = "Wine updated"
-      redirect_to admin_products_path
-    else
-      flash[:error] = "Update failed"
-      render :edit
-    end
   end
 
   def destroy
-    @product = Product.find(params[:id])
 
-    # Clear associated cart items
-    @product.cart_items.clear
-
-    if @product.destroy
-      flash[:success] = "Product deleted successfully"
-      redirect_to admin_products_path
-    else
-      flash[:error] = "Failed to delete product"
-      redirect_back(fallback_location: admin_products_path)
-    end
   end
+
   private
 
   def set_product
