@@ -3,7 +3,11 @@
     <% @products.each_with_index do |product, index| %>
       <div class="product <%= index.even? ? 'white-bg' : 'black-bg' %>">
         <div class="image-container">
-          <%= image_tag 'Villa-Abad-Syrah-Tempranillo.jpg', class: "product-image" %>
+          <% if product && product.image.present? %>
+            <%= image_tag product.image, class: "product-image" %>
+          <% else %>
+            <%= image_tag 'thumbnail_Villa-Abad-Syrah-Tempranillo 2 Background Removed.png', class: "product-image" %>
+          <% end %>
         </div>
         <h2><%= link_to product.name, product_path(product) %></h2>
         <p><%= product.description %></p>
