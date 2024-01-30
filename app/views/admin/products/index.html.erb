@@ -3,7 +3,11 @@
     <% @products.each do |product| %>
         <div class="product">
           <div class="image-container">
-            <%= image_tag product.image, class: "product-card-image" %>
+            <% if product && product.image.present? %>
+              <%= image_tag product.image, class: "product-image" %>
+            <% else %>
+              <%= image_tag 'thumbnail_Villa-Abad-Syrah-Tempranillo 2 Background Removed.png', class: "product-image" %>
+            <% end %>
           </div>
           <h2><%= link_to product.name, product_path(product) %></h2>
           <div class="product-info">

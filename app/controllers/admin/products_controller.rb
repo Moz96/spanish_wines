@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :check_if_admin
   def index
     @products = Product.all
   end
@@ -31,6 +32,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   private
+
+  def check_if_admin
+    redirect_to root_path unless current_user.admin?
+  end
 
   def set_product
     @product = Product.find(params[:id])
