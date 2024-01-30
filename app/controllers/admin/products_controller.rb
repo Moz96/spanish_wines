@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :set_product, only: [ :edit, :update, :destroy]
   before_action :check_if_admin
   def index
     @products = Product.all
@@ -20,12 +21,14 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def update
+
+  end
   def edit
-    @product
   end
 
   def destroy
-    @product
+    @product.image.purge if @product.image.attached?
     @product.destroy
     flash[:success] = "Wine deleted"
     redirect_to admin_products_path
