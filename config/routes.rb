@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'custom_sessions' }
-  devise_for :admins, controllers: { sessions: 'custom_sessions' }
+  devise_for :users
+  namespace :admin do
+    resources :products, only: [:index, :new, :create ]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -21,7 +23,10 @@ Rails.application.routes.draw do
     end
   end
   post "checkout/create", to: "checkout#create"
-  namespace :admin do
-    resources :products, only: [:index, :new, :create]
-  end
+  # authenticate :admin do
+  #   namespace :admin do
+  #     resources :products, only: [:index, :new, :create]
+  #     # Add other admin resources here
+  #   end
+  # end
 end
