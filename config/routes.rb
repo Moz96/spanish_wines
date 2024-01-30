@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :cart_items, only: [:create, :destroy]
     end
   end
+  post "checkout/create", to: "checkout#create"
   namespace :admin do
     resources :products, only: [:index, :new, :create]
   end
