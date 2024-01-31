@@ -79,6 +79,7 @@ header{
   list-style-type: none;
   display: flex;
   justify-content: space-around;
+
 }
 
 .navbar-item-button {
