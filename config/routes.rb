@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   resources :products do
     resources :reviews, only:[:new, :create, :show]
     resources :orders, only:[:create, :new]
-    resources :purchases, only:[:new]
     post 'add_to_cart', on: :member
   end
   resources :users do
@@ -22,7 +21,6 @@ Rails.application.routes.draw do
       resources :cart_items, only: [:create, :destroy]
     end
   end
-  post "checkout/create", to: "checkout#create"
   # authenticate :admin do
   #   namespace :admin do
   #     resources :products, only: [:index, :new, :create]
