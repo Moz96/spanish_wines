@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :product
+  enum status: {
+    pending: 0,
+    paid: 1
+  }
 end
