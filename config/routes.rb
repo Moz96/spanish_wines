@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     resources :orders, only:[:create, :new]
     post 'add_to_cart', on: :member
   end
+  resources :checkouts, only: [:show]
+  resources :payments, only: [:show]
+
   resources :users do
     resources :orders, only: [:index]
     resources :carts, only: [:show, :update] do
