@@ -17,7 +17,7 @@
       <p><%= @product.category %></p>
     </div>
     <div class="buttons">
-      <%= button_to 'Add to cart', add_to_cart_product_path(@product), method: :post, class: "cart-button" %>
+      <%= button_to 'Add to cart', add_to_cart_product_path(@product.id), method: :post, class: "cart-button" %>
       <%= link_to "Buy Now", checkout_path(product_id: @product.id) %>
       <%= link_to 'Add Review', new_product_review_path(@product) %>
       <%= link_to "Back to Wine list", products_path %>

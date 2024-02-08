@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_06_103500) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_06_143309) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_103500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stripe_checkout_id"
-    t.integer "status", default: 0
+    t.integer "status"
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -97,6 +97,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_103500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_products_on_order_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -133,6 +135,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_103500) do
   add_foreign_key "carts", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
+  add_foreign_key "products", "orders"
   add_foreign_key "reviews", "products"
   add_foreign_key "reviews", "users"
 end
