@@ -1,6 +1,5 @@
 class CheckoutsController < ApplicationController
   def show
-    @product = product
     @session = Stripe::Checkout::Session.create(
       line_items: [{
         price_data: {
