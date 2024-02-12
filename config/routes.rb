@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :orders, only: [:index]
     resources :carts, only: [:show, :update] do
-      resources :cart_items, only: [:create, :destroy]
+      resources :cart_items, only: [:create, :destroy, :update]
     end
   end
   # authenticate :admin do
