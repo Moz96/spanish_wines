@@ -2,18 +2,12 @@
 
 <% @cart_items.each do |cart_item| %>
   <div class="cart-item">
-    <%= image_tag cart_item.product.image, class: "product-card-image" %>
     <h3><%= cart_item.product.name %></h3>
     <p><%= cart_item.product.description %></p>
     <p>Quantity: <%= cart_item.quantity %></p>
     <p>Price: <%= cart_item.product.price * cart_item.quantity %></p>
-   <%= form_with(url: update_cart_path(cart_item_id: cart_item.id, quantity: cart_item.quantity + 1), method: :patch, class: 'update-quantity') do |form| %>
-    <%= form.submit '+', class: 'button' %>
-   <% end %>
-
-    <%= form_with(url: update_cart_path(cart_item_id: cart_item.id, quantity: cart_item.quantity - 1), method: :patch, class: 'update-quantity') do |form| %>
-      <%= form.submit '-', class: 'button' %>
-    <% end %>
+    <%= button_to '+', update_cart_path(cart_item_id: cart_item.id, quantity: cart_item.quantity + 1), method: :patch, class: 'update-quantity' %>
+    <%= button_to '-', update_cart_path(cart_item_id: cart_item.id, quantity: cart_item.quantity - 1), method: :patch, class: 'update-quantity' %>
     <%= link_to 'Remove', cart_item, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>
