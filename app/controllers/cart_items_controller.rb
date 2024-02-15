@@ -1,6 +1,7 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cart
+  before_action :set_cart_item
 
   def create
     @cart_item = @cart.cart_items.build(cart_item_params)
@@ -12,22 +13,20 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item = @cart.cart_items.find(params[:id])
-    new_quantity = params[:quantity].to_i
-
-    if new_quantity <= 0
-      @cart_item.destroy
-      redirect_to @cart, notice: 'Item removed from cart successfully!'
-    else
-      @cart_item.update(quantity: new_quantity)
-      redirect_to @cart, notice: 'Cart item quantity updated.'
+    @cart_item = CartItem.find(params[:id])
+    if params[:increment]
+      @cart_item.quantity += 1
+    elsif params[:decrement] && @cart_item.quantity > 1
+      @cart_item.quantity -= 1
     end
+    @cart_item.save
+    redirect_to user_cart_path(current_user, @cart_item.cart)
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_to user_cart_path(current_user, @cart_item.cart), notice: 'Item removed from cart successfully!'
+    redirect_to user_cart_path(current_user, @cart_item.cart)
   end
 
   private
@@ -36,4 +35,7 @@ class CartItemsController < ApplicationController
     @cart = current_user.cart
   end
 
+  def set_cart_item
+    @cart_item = @cart.cart_items.find_by(id: params[:id])
+  end
 end

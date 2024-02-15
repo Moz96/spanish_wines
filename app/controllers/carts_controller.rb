@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_cart, only: [:show, :update, :destroy]
+  before_action :set_cart, only: [:show, :destroy]
 
   def show
     # Retrieve the current user's cart items
@@ -14,14 +14,6 @@ class CartsController < ApplicationController
       redirect_to @cart, notice: 'Cart was successfully created.'
     else
       render :new
-    end
-  end
-
-  def update
-    if @cart.update(cart_params)
-      redirect_to @cart, notice: 'Cart was successfully updated.'
-    else
-      render :edit
     end
   end
 
