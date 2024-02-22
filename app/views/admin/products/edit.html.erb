@@ -1,7 +1,7 @@
 <h1>Edit Product</h1>
 <main class="admin-edit-product">
   <section class="product-form">
-    <%= form_with(model: [:admin, @product], url: admin_products_path) do |form| %>
+    <%= form_with(model: [:admin, @product], url: admin_product_path(@product), method: :patch) do |form| %>
       <div class="field">
         <%= form.label :name %>
         <%= form.text_field :name %>
@@ -34,7 +34,7 @@
 
       <div class ="field">
        <%= form.label :image %>
-       <%= form.file_field :image %>
+       <%= form.file_field :image, required: false %>
       </div>
 
       <div class="actions">

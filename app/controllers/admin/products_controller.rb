@@ -22,8 +22,15 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-
+    if @product.update(product_params)
+      flash[:success] = "Product updated successfully"
+      redirect_to admin_products_path
+    else
+      flash[:error] = "Failed to update product"
+      render :edit
+    end
   end
+
   def edit
   end
 

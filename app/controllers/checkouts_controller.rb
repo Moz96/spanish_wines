@@ -57,7 +57,6 @@ class CheckoutsController < ApplicationController
     end
 
     if cart_items_valid
-      # Proceed with checkout
       current_user.cart.cart_items.each do |cart_item|
         product = cart_item.product
         product.update(quantity: product.quantity - cart_item.quantity)
@@ -68,7 +67,6 @@ class CheckoutsController < ApplicationController
       flash[:error] ||= "Checkout failed due to insufficient stock"
     end
 
-    # Debug output
     puts "Cart items valid: #{cart_items_valid}"
     puts "Flash message: #{flash[:error]}"
 
