@@ -1,25 +1,33 @@
-<h1>Your Shopping Cart</h1>
+<div class="cart">
+  <h1>Your Shopping Cart</h1>
 
-<% if @cart_items.any? %>
+  <% if @cart_items.any? %>
   <% @cart_items.each do |cart_item| %>
     <div class="cart-item">
-      <h3><%= cart_item.product.name %></h3>
-      <%= image_tag cart_item.product.image, class: "cart-product-image" %>
-      <p>Quantity: <%= cart_item.quantity %></p>
-      <p>Price: £<%= cart_item.product.price * cart_item.quantity %></p>
-      <%= button_to '+', user_cart_cart_item_path(@cart.user, @cart, cart_item, increment: true), method: :put, class: "add-button" %>
-      <%= button_to '-', user_cart_cart_item_path(@cart.user, @cart, cart_item, decrement: true), method: :put, class:  "subtract-button" %>
+      <% if cart_item.product.present? %>
+        <h3><%= cart_item.product.name %></h3>
+        <%= image_tag cart_item.product.image, class: "cart-product-image" if cart_item.product.image.attached? %>
+        <p>Quantity: <%= cart_item.quantity %></p>
+        <% if cart_item.product.price.present? %>
+          <p>Price: £<%= cart_item.product.price * cart_item.quantity %></p>
+        <% else %>
+          <p>Price Not Available</p>
+        <% end %>
+      <% else %>
+        <p>Product No Longer Available</p>
+      <% end %>
+      <%= button_to '+', user_cart_cart_item_path(@cart.user, @cart, cart_item, increment: true), method: :put, class: "add-subtract-button" %>
+      <%= button_to '-', user_cart_cart_item_path(@cart.user, @cart, cart_item, decrement: true), method: :put, class:  "add-subtract-button" %>
       <%= link_to 'Remove', user_cart_cart_item_path(@cart.user, @cart, cart_item), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>
-<% else %>
-  <p>Your cart is empty</p>
-<% end %>
-
-<div class="cart-summary">
-  <h2>Cart Summary</h2>
-  <p>Total Items: <%= @cart_items.sum(:quantity) %></p>
-  <p>Total Price: £<%= @cart_items.map { |item| item.product.price * item.quantity }.sum %></p>
-  <%= button_to 'Checkout', checkout_path, method: :get %>
-  <%# <%= link_to 'Checkout', new_order_path %> <!-- Make sure to uncomment and adjust this link if you're ready for checkout -->
+  <% else %>
+    <p>Your cart is empty</p>
+  <% end %>
+  <div class="cart-summary">
+    <h2>Cart Summary</h2>
+    <p>Total Items: <%= @cart_items.sum(:quantity) %></p>
+    <p>Total Price: £<%= @cart_items.map { |item| item.product.price * item.quantity }.sum %></p>
+    <%= button_to 'Checkout', checkout_path, method: :get %>
+  </div>
 </div>

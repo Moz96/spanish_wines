@@ -1,10 +1,10 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_cart, only: [:show, :destroy]
+  before_action :cleanup_cart, only: [:show]
 
   def show
-    # Retrieve the current user's cart items
-    @cart_items = @cart.cart_items
+    @cart_items = @cart.cart_items.includes(:product)
   end
 
   def create
@@ -26,6 +26,15 @@ class CartsController < ApplicationController
 
   def set_cart
     @cart = current_user.cart
+  end
+
+  def cleanup_cart
+    @cart.cart_items.each do |cart_item|
+      unless cart_item.product.present?
+        cart_item.destroy
+        flash[:notice] = "A product in your cart is no longer available and has been removed."
+      end
+    end
   end
 
 end

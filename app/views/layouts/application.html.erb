@@ -25,9 +25,12 @@
             <li class="navbar-item-button"><%= link_to "About", about_path, class: "button-navbar" %></li>
             <li class="navbar-item-button"><%= link_to "Wine list", products_path, class: "button-navbar" %></li>
             <% if user_signed_in? %>
+              <% cart = current_user.cart %>
+              <% total_price = cart.cart_items.map { |item| item.product.price * item.quantity }.sum %>
+              <% link_text = " - Total: £#{total_price}" %>
               <li class="navbar-item-button">
                 <%= link_to(user_cart_path(current_user, current_user.cart), class: "button-navbar") do %>
-                  <i class='bx bx-cart'></i> Your cart
+                  <i class='bx bx-cart'></i> <%= link_text.html_safe %>
                 <% end %>
               </li>
             <% end %>

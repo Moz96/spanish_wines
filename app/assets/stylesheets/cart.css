@@ -1,7 +1,15 @@
+.cart{
+  display: grid;
+}
+
 .cart-item{
   color: white;
   padding-left: 20px;
+  display: flex;
   justify-content: space-between;
+  border: 2px solid white;
+  margin-bottom: 5px;
+  width: 50%
 }
 
 .cart-product-image{
@@ -9,11 +17,10 @@
 
 }
 
-.add-button{
- display: flex;
+.add-subtract-button{
+  border: 1px solid red
 }
 
-.subtract-button{
- display: flex;
- right: 10;
+.cart-summary{
+
 }
