@@ -46,6 +46,8 @@ class CheckoutsController < ApplicationController
 
     current_user.orders.create(stripe_checkout_id: @session.id)
 
+    current_user.cart.cart_items.destroy_all
+
     respond_to do |format|
       format.html
       format.js
