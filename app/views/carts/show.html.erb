@@ -16,7 +16,7 @@
       <% else %>
         <p>Product No Longer Available</p>
       <% end %>
-      <%= button_to '+', user_cart_cart_item_path(@cart.user, @cart, cart_item, increment: true), method: :put, class: "add-subtract-button" %>
+      <%= button_to '+', user_cart_cart_item_path(@cart.user, @cart, cart_item, increment: true), method: :put, class: "add-subtract-button", disabled: cart_item.quantity >= cart_item.product.quantity ? true : false %>
       <%= button_to '-', user_cart_cart_item_path(@cart.user, @cart, cart_item, decrement: true), method: :put, class:  "add-subtract-button" %>
       <%= link_to 'Remove', user_cart_cart_item_path(@cart.user, @cart, cart_item), method: :delete, data: { confirm: 'Are you sure?' } %>
     </div>
