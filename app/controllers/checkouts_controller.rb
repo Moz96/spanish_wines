@@ -41,12 +41,37 @@ class CheckoutsController < ApplicationController
       line_items: line_items,
       mode: "payment",
       ui_mode: "embedded",
-      return_url: CGI.unescape(payment_url(session_id: '{CHECKOUT_SESSION_ID}'))
+      return_url: CGI.unescape(payment_url(session_id: '{CHECKOUT_SESSION_ID}')),
+      shipping_address_collection: {
+        allowed_countries: ['GB'],
+      }
     )
 
     current_user.orders.create(stripe_checkout_id: @session.id)
 
-    current_user.cart.cart_items.destroy_all
+    cart_items_valid = true
+    current_user.cart.cart_items.each do |cart_item|
+      product = cart_item.product
+      if product.quantity < cart_item.quantity
+        cart_items_valid = false
+        flash[:error] = "Not enough stock available for #{product.name}"
+        break
+      end
+    end
+
+    if cart_items_valid
+      current_user.cart.cart_items.each do |cart_item|
+        product = cart_item.product
+        product.update(quantity: product.quantity - cart_item.quantity)
+      end
+      current_user.cart.cart_items.destroy_all
+      flash[:success] = "Checkout successful!"
+    else
+      flash[:error] ||= "Checkout failed due to insufficient stock"
+    end
+
+    puts "Cart items valid: #{cart_items_valid}"
+    puts "Flash message: #{flash[:error]}"
 
     respond_to do |format|
       format.html

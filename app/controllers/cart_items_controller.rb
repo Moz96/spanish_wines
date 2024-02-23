@@ -4,11 +4,21 @@ class CartItemsController < ApplicationController
   before_action :set_cart_item
 
   def create
-    @cart_item = @cart.cart_items.build(cart_item_params)
-    if @cart_item.save
-      redirect_to @cart, notice: 'Item added to cart.'
+    product = Product.find(params[:product_id])
+    quantity_to_add = params[:quantity].to_i
+    available_quantity = product.quantity
+
+    if quantity_to_add <= available_quantity
+      @cart_item = @cart.cart_items.build(cart_item_params)
+      if @cart_item.save
+        redirect_to @cart, notice: 'Item added to cart.'
+      else
+        flash[:error] = 'Failed to add item to cart.'
+        redirect_to products_path
+      end
     else
-      # Handle errors
+      flash[:error] = "Cannot add more than #{available_quantity} items to cart."
+      redirect_to products_path
     end
   end
 
@@ -37,5 +47,9 @@ class CartItemsController < ApplicationController
 
   def set_cart_item
     @cart_item = @cart.cart_items.find_by(id: params[:id])
+  end
+
+  def cart_item_params
+    params.require(:cart_item).permit(:product_id, :quantity)
   end
 end
