@@ -41,7 +41,10 @@ class CheckoutsController < ApplicationController
       line_items: line_items,
       mode: "payment",
       ui_mode: "embedded",
-      return_url: CGI.unescape(payment_url(session_id: '{CHECKOUT_SESSION_ID}'))
+      return_url: CGI.unescape(payment_url(session_id: '{CHECKOUT_SESSION_ID}')),
+      shipping_address_collection: {
+        allowed_countries: ['GB'],
+      }
     )
 
     current_user.orders.create(stripe_checkout_id: @session.id)
