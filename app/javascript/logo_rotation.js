@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const wineWords = ['wʌɪn', 'vino', 'vin', 'wein', 'вино'];
+  const wineWords = ['vino', 'vin', 'wein', 'вино'];
   const logoElement = document.getElementById('wineLogo');
 
   let currentWordIndex = 0;
