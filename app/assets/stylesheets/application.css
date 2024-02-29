@@ -61,7 +61,16 @@ header{
   max-width: 30rem;
   letter-spacing: 10px;
   font-weight: 400;
+  text-decoration: none; /* Remove underline */ /* Inherit color from parent (optional) */
+  cursor: pointer; /* Change cursor to pointer when hovering (optional) */
+  color: #483C32;
 }
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 @media screen and (max-width: 768px) {
   .logo {

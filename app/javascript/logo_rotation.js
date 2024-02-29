@@ -9,5 +9,5 @@ document.addEventListener('DOMContentLoaded', function() {
     currentWordIndex = (currentWordIndex + 1) % wineWords.length;
   }
 
-  setInterval(rotateLogoText, 4000);
+  setInterval(rotateLogoText, 3000);
 });
